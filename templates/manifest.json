@@ -1,0 +1,113 @@
+{
+  "version": "13.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "AwsCdkStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "AwsCdkStack.template.json",
+        "validateOnSynth": false
+      },
+      "metadata": {
+        "/AwsCdkStack/myBucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "myBucket5AF9C99B",
+            "trace": [
+              "new Bucket (/home/lashanf/Personal_Projects/aws-cdk/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:713:22)",
+              "new AwsCdkStack (/home/lashanf/Personal_Projects/aws-cdk/lib/aws-cdk-stack.ts:8:20)",
+              "Object.<anonymous> (/home/lashanf/Personal_Projects/aws-cdk/bin/aws-cdk.ts:7:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Module.m._compile (/home/lashanf/Personal_Projects/aws-cdk/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Object.require.extensions.<computed> [as .ts] (/home/lashanf/Personal_Projects/aws-cdk/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "main (/home/lashanf/Personal_Projects/aws-cdk/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/home/lashanf/Personal_Projects/aws-cdk/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "/home/lashanf/.nvm/versions/node/v14.16.0/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/AwsCdkStack/bucketExport": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "bucketExport",
+            "trace": [
+              "new AwsCdkStack (/home/lashanf/Personal_Projects/aws-cdk/lib/aws-cdk-stack.ts:11:5)",
+              "Object.<anonymous> (/home/lashanf/Personal_Projects/aws-cdk/bin/aws-cdk.ts:7:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Module.m._compile (/home/lashanf/Personal_Projects/aws-cdk/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Object.require.extensions.<computed> [as .ts] (/home/lashanf/Personal_Projects/aws-cdk/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "main (/home/lashanf/Personal_Projects/aws-cdk/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/home/lashanf/Personal_Projects/aws-cdk/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "/home/lashanf/.nvm/versions/node/v14.16.0/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/AwsCdkStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata",
+            "trace": [
+              "new MetadataResource (/home/lashanf/Personal_Projects/aws-cdk/node_modules/@aws-cdk/core/lib/private/metadata-resource.ts:22:24)",
+              "/home/lashanf/Personal_Projects/aws-cdk/node_modules/@aws-cdk/core/lib/private/synthesis.ts:166:5",
+              "visit (/home/lashanf/Personal_Projects/aws-cdk/node_modules/@aws-cdk/core/lib/private/synthesis.ts:231:5)",
+              "visit (/home/lashanf/Personal_Projects/aws-cdk/node_modules/@aws-cdk/core/lib/private/synthesis.ts:227:5)",
+              "injectMetadataResources (/home/lashanf/Personal_Projects/aws-cdk/node_modules/@aws-cdk/core/lib/private/synthesis.ts:157:3)",
+              "Object.synthesize (/home/lashanf/Personal_Projects/aws-cdk/node_modules/@aws-cdk/core/lib/private/synthesis.ts:18:3)",
+              "App.synth (/home/lashanf/Personal_Projects/aws-cdk/node_modules/@aws-cdk/core/lib/stage.ts:94:23)",
+              "process.<anonymous> (/home/lashanf/Personal_Projects/aws-cdk/node_modules/@aws-cdk/core/lib/app.ts:64:45)",
+              "Object.onceWrapper (events.js:422:26)",
+              "process.emit (events.js:315:20)",
+              "process.EventEmitter.emit (domain.js:467:12)",
+              "process.emit (/home/lashanf/Personal_Projects/aws-cdk/node_modules/source-map-support/source-map-support.js:495:21)"
+            ]
+          }
+        ],
+        "/AwsCdkStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable",
+            "trace": [
+              "new MetadataResource (/home/lashanf/Personal_Projects/aws-cdk/node_modules/@aws-cdk/core/lib/private/metadata-resource.ts:31:27)",
+              "/home/lashanf/Personal_Projects/aws-cdk/node_modules/@aws-cdk/core/lib/private/synthesis.ts:166:5",
+              "visit (/home/lashanf/Personal_Projects/aws-cdk/node_modules/@aws-cdk/core/lib/private/synthesis.ts:231:5)",
+              "visit (/home/lashanf/Personal_Projects/aws-cdk/node_modules/@aws-cdk/core/lib/private/synthesis.ts:227:5)",
+              "injectMetadataResources (/home/lashanf/Personal_Projects/aws-cdk/node_modules/@aws-cdk/core/lib/private/synthesis.ts:157:3)",
+              "Object.synthesize (/home/lashanf/Personal_Projects/aws-cdk/node_modules/@aws-cdk/core/lib/private/synthesis.ts:18:3)",
+              "App.synth (/home/lashanf/Personal_Projects/aws-cdk/node_modules/@aws-cdk/core/lib/stage.ts:94:23)",
+              "process.<anonymous> (/home/lashanf/Personal_Projects/aws-cdk/node_modules/@aws-cdk/core/lib/app.ts:64:45)",
+              "Object.onceWrapper (events.js:422:26)",
+              "process.emit (events.js:315:20)",
+              "process.EventEmitter.emit (domain.js:467:12)",
+              "process.emit (/home/lashanf/Personal_Projects/aws-cdk/node_modules/source-map-support/source-map-support.js:495:21)"
+            ]
+          }
+        ]
+      },
+      "displayName": "AwsCdkStack"
+    }
+  }
+}
