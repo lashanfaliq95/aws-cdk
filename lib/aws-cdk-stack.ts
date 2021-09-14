@@ -1,20 +1,30 @@
+import { ARecord, IPublicHostedZone, RecordTarget } from '@aws-cdk/aws-route53';
 import { Bucket, BucketEncryption } from '@aws-cdk/aws-s3';
 import * as cdk from '@aws-cdk/core';
 import * as Lambda from '@aws-cdk/aws-lambda-nodejs';
 import { Runtime } from '@aws-cdk/aws-lambda';
+import { S3Origin } from '@aws-cdk/aws-cloudfront-origins';
 import path from 'path';
 import { BucketDeployment, Source } from '@aws-cdk/aws-s3-deployment';
 import { PolicyStatement } from '@aws-cdk/aws-iam';
+import { CloudFrontTarget } from '@aws-cdk/aws-route53-targets';
 import { HttpApi, HttpMethod, CorsHttpMethod } from '@aws-cdk/aws-apigatewayv2';
 import { LambdaProxyIntegration } from '@aws-cdk/aws-apigatewayv2-integrations';
-import { CloudFrontWebDistribution } from '@aws-cdk/aws-cloudfront';
+import {
+  CloudFrontWebDistribution,
+  Distribution
+} from '@aws-cdk/aws-cloudfront';
+import { ICertificate } from '@aws-cdk/aws-certificatemanager';
 
 interface SimpleStackProps extends cdk.StackProps {
-  envName: string;
+  envName?: string;
+  hostedZone: IPublicHostedZone;
+  certificate: ICertificate;
+  dns: string;
 }
 
 export class AwsCdkStack extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, props?: SimpleStackProps) {
+  constructor(scope: cdk.Construct, id: string, props: SimpleStackProps) {
     super(scope, id, props);
 
     const bucket = new Bucket(this, 'myBucket', {
@@ -34,7 +44,18 @@ export class AwsCdkStack extends cdk.Stack {
       publicReadAccess: true
     });
 
-    const cloudFront = new CloudFrontWebDistribution(this, 'appDistribution', {
+    const cloudFront = new Distribution(this, 'simpleappdistrubuto', {
+      defaultBehavior: { origin: new S3Origin(websiteBucket) },
+      domainNames: [props.dns],
+      certificate: props.certificate
+    });
+
+    new ARecord(this, 'simplerecordapex', {
+      zone: props.hostedZone,
+      target: RecordTarget.fromAlias(new CloudFrontTarget(cloudFront))
+    });
+
+    const cloudFront1 = new CloudFrontWebDistribution(this, 'appDistribution', {
       originConfigs: [
         {
           s3OriginSource: {

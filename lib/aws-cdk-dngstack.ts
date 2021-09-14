@@ -1,20 +1,26 @@
-import { Bucket, BucketEncryption } from '@aws-cdk/aws-s3';
+import {
+  Certificate,
+  CertificateValidation,
+  ICertificate
+} from '@aws-cdk/aws-certificatemanager';
+import { IPublicHostedZone, PublicHostedZone } from '@aws-cdk/aws-route53';
 import * as cdk from '@aws-cdk/core';
-import * as Lambda from '@aws-cdk/aws-lambda-nodejs';
-import { Runtime } from '@aws-cdk/aws-lambda';
-import path from 'path';
-import { BucketDeployment, Source } from '@aws-cdk/aws-s3-deployment';
-import { PolicyStatement } from '@aws-cdk/aws-iam';
-import { HttpApi, HttpMethod, CorsHttpMethod } from '@aws-cdk/aws-apigatewayv2';
-import { LambdaProxyIntegration } from '@aws-cdk/aws-apigatewayv2-integrations';
-import { CloudFrontWebDistribution } from '@aws-cdk/aws-cloudfront';
 
-interface SimpleStackProps extends cdk.StackProps {
-  envName: string;
+interface SimpleDNSStackProps extends cdk.StackProps {
+  dnsName: string;
 }
 
-export class AwsCdkStack extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, props?: SimpleStackProps) {
+export class AwsAPPStackDns extends cdk.Stack {
+  public readonly hostedZone: IPublicHostedZone;
+  public readonly certificate: ICertificate;
+  constructor(scope: cdk.Construct, id: string, props?: SimpleDNSStackProps) {
     super(scope, id, props);
+    this.hostedZone = new PublicHostedZone(this, 'simpleapphostedzone', {
+      zoneName: props?.dnsName!
+    });
+    this.certificate = new Certificate(this, 'certificatemaneger', {
+      domainName: props?.dnsName!,
+      validation: CertificateValidation.fromDns(this.hostedZone)
+    });
   }
 }

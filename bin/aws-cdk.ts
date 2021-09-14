@@ -2,14 +2,16 @@
 import 'source-map-support/register';
 import * as cdk from '@aws-cdk/core';
 import { AwsCdkStack } from '../lib/aws-cdk-stack';
+import { AwsAPPStackDns } from '../lib/aws-cdk-dngstack';
 
+const domainNameApex = 'lashan.me';
 const app = new cdk.App();
-new AwsCdkStack(app, 'AwsCdkStack', {
-  env: { region: 'us-east-2' },
-  envName: 'dev'
+const { hostedZone, certificate } = new AwsAPPStackDns(app, 'AwsAppstack', {
+  dnsName: domainNameApex
 });
 
-new AwsCdkStack(app, 'AwsCdkStackProd', {
-  env: { region: 'us-west-2' },
-  envName: 'prod'
+new AwsCdkStack(app, 'AwsCdkStack', {
+  hostedZone,
+  certificate,
+  dns: domainNameApex
 });
